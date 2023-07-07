@@ -1,0 +1,29 @@
+{
+  "name": "qwik-resume",
+  "version": "0.0.0",
+  "description": "A dynamic and innovative application built using the Qwik framework and artificial intelligence to generate customizable, job-specific résumés.",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint . --ext .ts,.tsx",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "resume",
+    "cv",
+    "qwik",
+    "qwik resume",
+    "employment",
+    "job search",
+    "compose resume"
+  ],
+  "author": "Chris Strolia-Davis",
+  "license": "MIT",
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.61.0",
+    "@typescript-eslint/parser": "^5.61.0",
+    "eslint": "^8.44.0",
+    "eslint-plugin-fp": "^2.3.0",
+    "eslint-plugin-import": "^2.27.5",
+    "typescript": "^5.1.6"
+  }
+}
