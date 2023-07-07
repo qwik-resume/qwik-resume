@@ -4,91 +4,91 @@ The following is a breakdown of lint rules that are indicated in the `.eslintrc`
 Air-Bnb ruleset, however, rather than just extending that ruleset, the actual rules were included, so that it is clear
 what all the rules are and the reason they might be used.
 
-## [`@typescript-eslint/adjacent-overload-signatures`](https://palantir.github.io/tslint/rules/adjacent-overload-signatures/)
+## [`@typescript-eslint/adjacent-overload-signatures`](https://typescript-eslint.io/rules/adjacent-overload-signatures/)
 - **What it does:** Enforces that overload signatures are grouped together.
 - **Why:** Improves code readability.
 
-## [`@typescript-eslint/ban-ts-comment`](https://palantir.github.io/tslint/rules/ban-ts-comment/)
+## [`@typescript-eslint/ban-ts-comment`](https://typescript-eslint.io/rules/ban-ts-comment/)
 - **What it does:** Bans the use of TypeScript suppression comments like `// @ts-ignore` or `// @ts-nocheck`.
 - **Why:** These comments suppress TypeScript error reports, which can hide real issues in the code.
 
-## [`@typescript-eslint/ban-types`](https://palantir.github.io/tslint/rules/ban-types/)
+## [`@typescript-eslint/ban-types`](https://typescript-eslint.io/rules/ban-types/)
 - **What it does:** Bans specific types that are considered problematic.
 - **Why:** Some types, like `Object`, `{}`, or `Function`, can lead to unexpected behavior or bugs.
 
-## [`@typescript-eslint/no-array-constructor`](https://palantir.github.io/tslint/rules/no-array-constructor/) / [`no-array-constructor`](https://eslint.org/docs/latest/rules/no-array-constructor)
+## [`@typescript-eslint/no-array-constructor`](https://typescript-eslint.io/rules/no-array-constructor/) / [`no-array-constructor`](https://eslint.org/docs/latest/rules/no-array-constructor)
 - **What it does:** Disallows the use of the `Array` constructor to create a new array.
 - **Why:** Using the `Array` constructor can lead to confusion and unexpected behavior. It's recommended to use array literals instead.
 
-## [`@typescript-eslint/no-empty-function`](https://palantir.github.io/tslint/rules/no-empty-function/) / [`no-empty-function`](https://eslint.org/docs/latest/rules/no-empty-function)
+## [`@typescript-eslint/no-empty-function`](https://typescript-eslint.io/rules/no-empty-function/) / [`no-empty-function`](https://eslint.org/docs/latest/rules/no-empty-function)
 - **What it does:** Disallows empty functions.
 - **Why:** Empty functions can be confusing because it's not clear what their purpose is. The base rule is turned off because the TypeScript-specific rule covers more cases.
 
-## [`@typescript-eslint/no-empty-interface`](https://palantir.github.io/tslint/rules/no-empty-interface/)
+## [`@typescript-eslint/no-empty-interface`](https://typescript-eslint.io/rules/no-empty-interface/)
 - **What it does:** Disallows the declaration of empty interfaces.
 - **Why:** Empty interfaces are often an indicator of missing type information.
 
-## [`@typescript-eslint/no-explicit-any`](https://palantir.github.io/tslint/rules/no-explicit-any/)
+## [`@typescript-eslint/no-explicit-any`](https://typescript-eslint.io/rules/no-explicit-any/)
 - **What it does:** Disallows usage of the `any` type.
 - **Why:** The `any` type bypasses TypeScript's type checking and can lead to runtime errors.
 
-## [`@typescript-eslint/no-extra-non-null-assertion`](https://palantir.github.io/tslint/rules/no-extra-non-null-assertion/)
+## [`@typescript-eslint/no-extra-non-null-assertion`](https://typescript-eslint.io/rules/no-extra-non-null-assertion/)
 - **What it does:** Disallows unnecessary non-null assertions.
 - **Why:** Unnecessary non-null assertions do not affect runtime behavior but can confuse readers.
 
-## [`@typescript-eslint/no-extra-semi`](https://palantir.github.io/tslint/rules/no-extra-semi/) / [`no-extra-semi`](https://eslint.org/docs/latest/rules/no-extra-semi)
+## [`@typescript-eslint/no-extra-semi`](https://typescript-eslint.io/rules/no-extra-semi/) / [`no-extra-semi`](https://eslint.org/docs/latest/rules/no-extra-semi)
 - **What it does:** Disallows unnecessary semicolons.
 - **Why:** Unnecessary semicolons can lead to confusion and inconsistencies in the code. The base rule is turned off because the TypeScript-specific rule covers more cases.
 
-## [`@typescript-eslint/no-inferrable-types`](https://palantir.github.io/tslint/rules/no-inferrable-types/)
+## [`@typescript-eslint/no-inferrable-types`](https://typescript-eslint.io/rules/no-inferrable-types/)
 - **What it does:** Disallows explicit type declarations for variables or parameters initialized to a number, string, or boolean.
 - **Why:** These types can be inferred by TypeScript, so explicitly declaring them is unnecessary and can lead to more verbose code.
 
-## [`@typescript-eslint/no-loss-of-precision`](https://palantir.github.io/tslint/rules/no-loss-of-precision/) / [`no-loss-of-precision`](https://eslint.org/docs/latest/rules/no-loss-of-precision)
+## [`@typescript-eslint/no-loss-of-precision`](https://typescript-eslint.io/rules/no-loss-of-precision/) / [`no-loss-of-precision`](https://eslint.org/docs/latest/rules/no-loss-of-precision)
 - **What it does:** Disallows literal numbers that lose precision.
 - **Why:** JavaScript can only safely represent numbers between -(2^53 - 1) and 2^53 - 1, so using numbers outside this range can lead to precision loss. The base rule is turned off because the TypeScript-specific rule covers more cases.
 
-## [`@typescript-eslint/no-misused-new`](https://palantir.github.io/tslint/rules/no-misused-new/)
+## [`@typescript-eslint/no-misused-new`](https://typescript-eslint.io/rules/no-misused-new/)
 - **What it does:** Disallows the use of `new` for non-constructor functions and the use of `new` or `constructor` outside of a class.
 - **Why:** Misusing `new` can lead to unexpected behavior and errors.
 
-## [`@typescript-eslint/no-namespace`](https://palantir.github.io/tslint/rules/no-namespace/)
+## [`@typescript-eslint/no-namespace`](https://typescript-eslint.io/rules/no-namespace/)
 - **What it does:** Disallows the use of custom TypeScript modules and namespaces.
 - **Why:** Modules are the preferred way to organize code in TypeScript. Custom namespaces can lead to less idiomatic code.
 
-## [`@typescript-eslint/no-non-null-asserted-optional-chain`](https://palantir.github.io/tslint/rules/no-non-null-asserted-optional-chain/)
+## [`@typescript-eslint/no-non-null-asserted-optional-chain`](https://typescript-eslint.io/rules/no-non-null-asserted-optional-chain/)
 - **What it does:** Disallows non-null assertions on the result of an optional chain expression.
 - **Why:** Non-null assertions cancel the benefits of optional chaining and can lead to runtime errors if the value is null or undefined.
 
-## [`@typescript-eslint/no-non-null-assertion`](https://palantir.github.io/tslint/rules/no-non-null-assertion/)
+## [`@typescript-eslint/no-non-null-assertion`](https://typescript-eslint.io/rules/no-non-null-assertion/)
 - **What it does:** Disallows non-null assertions using the `!` postfix operator.
 - **Why:** Non-null assertions can lead to runtime errors if the value is null or undefined. It's safer to handle these cases explicitly.
 
-## [`@typescript-eslint/no-this-alias`](https://palantir.github.io/tslint/rules/no-this-alias/)
+## [`@typescript-eslint/no-this-alias`](https://typescript-eslint.io/rules/no-this-alias/)
 - **What it does:** Disallows aliasing `this`.
 - **Why:** Alias `this` can be confusing and is often an indicator of a design problem.
 
-## [`@typescript-eslint/no-unnecessary-type-constraint`](https://palantir.github.io/tslint/rules/no-unnecessary-type-constraint/)
+## [`@typescript-eslint/no-unnecessary-type-constraint`](https://typescript-eslint.io/rules/no-unnecessary-type-constraint/)
 - **What it does:** Disallows unnecessary constraints on a generic type.
 - **Why:** Unnecessary type constraints can lead to more verbose and less flexible code.
 
-## [`@typescript-eslint/no-unused-vars`](https://palantir.github.io/tslint/rules/no-unused-vars/) / [`no-unused-vars`](https://eslint.org/docs/latest/rules/no-unused-vars)
+## [`@typescript-eslint/no-unused-vars`](https://typescript-eslint.io/rules/no-unused-vars/) / [`no-unused-vars`](https://eslint.org/docs/latest/rules/no-unused-vars)
 - **What it does:** Disallows variables that are declared but not used. The `{vars: 'all', args: 'after-used', ignoreRestSiblings: true}` option configures the rule to check all variables and arguments for usage, but ignore rest sibling variables.
 - **Why:** Unused variables can lead to confusion and unnecessary code. The base rule is turned off because the TypeScript-specific rule covers more cases.
 
-## [`@typescript-eslint/no-var-requires`](https://palantir.github.io/tslint/rules/no-var-requires/)
+## [`@typescript-eslint/no-var-requires`](https://typescript-eslint.io/rules/no-var-requires/)
 - **What it does:** Disallows the use of `require` statements except in import statements.
 - **Why:** In TypeScript, `import` statements are the preferred way to bring in external modules. Using `require` can lead to less idiomatic code.
 
-## [`@typescript-eslint/prefer-as-const`](https://palantir.github.io/tslint/rules/prefer-as-const/)
+## [`@typescript-eslint/prefer-as-const`](https://typescript-eslint.io/rules/prefer-as-const/)
 - **What it does:** Prefers a literal type assertion `as const` over literal or primitive type annotations.
 - **Why:** The `as const` assertion is more concise and doesn't allow the literal to be widened to the primitive type.
 
-## [`@typescript-eslint/prefer-namespace-keyword`](https://palantir.github.io/tslint/rules/prefer-namespace-keyword/)
+## [`@typescript-eslint/prefer-namespace-keyword`](https://typescript-eslint.io/rules/prefer-namespace-keyword/)
 - **What it does:** Prefers the use of the `namespace` keyword instead of `module` to declare custom TypeScript modules.
 - **Why:** The `namespace` keyword is more modern and is the preferred way to declare custom TypeScript modules.
 
-## [`@typescript-eslint/triple-slash-reference`](https://palantir.github.io/tslint/rules/triple-slash-reference/)
+## [`@typescript-eslint/triple-slash-reference`](https://typescript-eslint.io/rules/triple-slash-reference/)
 - **What it does:** Disallows triple slash references that import types, `/// <reference types="" />`. These should be replaced with ES2015 `import` statements.
 - **Why:** ES2015 `import` statements are the preferred way to import types. Triple slash references are considered outdated.
 
