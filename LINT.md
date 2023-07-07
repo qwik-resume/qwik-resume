@@ -44,17 +44,9 @@ what all the rules are and the reason they might be used.
 - **What it does:** Disallows explicit type declarations for variables or parameters initialized to a number, string, or boolean.
 - **Why:** These types can be inferred by TypeScript, so explicitly declaring them is unnecessary and can lead to more verbose code.
 
-## [`@typescript-eslint/no-loss-of-precision`](https://typescript-eslint.io/rules/no-loss-of-precision/) / [`no-loss-of-precision`](https://eslint.org/docs/latest/rules/no-loss-of-precision)
-- **What it does:** Disallows literal numbers that lose precision.
-- **Why:** JavaScript can only safely represent numbers between -(2^53 - 1) and 2^53 - 1, so using numbers outside this range can lead to precision loss. The base rule is turned off because the TypeScript-specific rule covers more cases.
-
 ## [`@typescript-eslint/no-misused-new`](https://typescript-eslint.io/rules/no-misused-new/)
 - **What it does:** Disallows the use of `new` for non-constructor functions and the use of `new` or `constructor` outside of a class.
 - **Why:** Misusing `new` can lead to unexpected behavior and errors.
-
-## [`@typescript-eslint/no-namespace`](https://typescript-eslint.io/rules/no-namespace/)
-- **What it does:** Disallows the use of custom TypeScript modules and namespaces.
-- **Why:** Modules are the preferred way to organize code in TypeScript. Custom namespaces can lead to less idiomatic code.
 
 ## [`@typescript-eslint/no-non-null-asserted-optional-chain`](https://typescript-eslint.io/rules/no-non-null-asserted-optional-chain/)
 - **What it does:** Disallows non-null assertions on the result of an optional chain expression.
@@ -293,11 +285,6 @@ what all the rules are and the reason they might be used.
 - **Why:** This can prevent the use of overly short or long identifiers.
 - This rule currently specifies a range of 3-16 characters. If this is too limiting, it can be changed later.
 
-## [`id-match`](https://eslint.org/docs/latest/rules/id-match)
-- **What it does:** Requires identifiers to match a specified regular expression.
-- **Why:** This can enforce a specific naming convention for identifiers.
-- This rule is off because there is currently no specific pattern identified to follow for all cases.
-
 ## [`implicit-arrow-linebreak`](https://eslint.org/docs/latest/rules/implicit-arrow-linebreak)
 - **What it does:** Requires the arrow function body to be on the same line as the arrow (`=>`).
 - **Why:** Consistent line breaks can make the code more readable.
@@ -359,17 +346,9 @@ what all the rules are and the reason they might be used.
 - **What it does:** Disallows anonymous values as default exports.
 - **Why:** Anonymous default exports can make it harder to identify the exported value.
 
-## [`import/no-commonjs`](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-commonjs.md)
-- **What it does:** Disallows the use of CommonJS `require` and `module.exports`.
-- **Why:** In ES6 modules, `import` and `export` are the preferred way to handle modules.
-
 ## [`import/no-cycle`](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-cycle.md)
 - **What it does:** Disallows circular dependencies between modules.
 - **Why:** Circular dependencies can lead to initialization issues and can make the code harder to understand and maintain.
-
-## [`import/no-default-export`](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-default-export.md)
-- **What it does:** Disallows default exports.
-- **Why:** Some prefer named exports because they can be more explicit and easier to refactor.
 
 ## [`import/no-deprecated`](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-deprecated.md)
 - **What it does:** Disallows the use of deprecated symbols from imported modules.
@@ -391,10 +370,6 @@ what all the rules are and the reason they might be used.
 - **What it does:** Disallows the use of `import` and `module.exports` in the same file.
 - **Why:** Mixing `import` and `module.exports` can be confusing and is considered a bad practice.
 
-## [`import/no-internal-modules`](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-internal-modules.md)
-- **What it does:** Disallows `import` statements that import modules from inside another module.
-- **Why:** This can be useful for enforcing encapsulation of modules.
-
 ## [`import/no-mutable-exports`](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-mutable-exports.md)
 - **What it does:** Disallows the mutation of exported values.
 - **Why:** Mutating exports can lead to unpredictable behavior and is considered a bad practice.
@@ -411,29 +386,18 @@ what all the rules are and the reason they might be used.
 - **What it does:** Disallows the use of the `default` keyword as a named import.
 - **Why:** The `default` keyword is reserved for default exports and should not be used as a named import.
 
-## [`import/no-named-export`](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-named-export.md)
-- **What it does:** Disallows named exports.
-- **Why:** Some prefer default exports because they can simplify imports.
-
 ## [`import/no-namespace`](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-namespace.md)
 - **What it does:** Disallows `import * as name` syntax.
 - **Why:** This syntax imports all exports from a module, which can lead to less clear code. 
-
-## [`import/no-nodejs-modules`](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-nodejs-modules.md)
-- **What it does:** Disallows the use of Node.js built-in modules.
-- **Why:** This rule is useful for front-end code that should not depend on Node.js modules.
 
 ## [`import/no-relative-packages`](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-relative-packages.md)
 - **What it does:** Disallows importing packages from relative paths.
 - **Why:** Importing packages from relative paths can be confusing and is considered a bad practice.
 
-## [`import/no-relative-parent-imports`](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-relative-parent-imports.md)
-- **What it does:** Disallows relative imports for modules in parent directories.
-- **Why:** Relative imports for parent modules can make the code harder to move around.
-
 ## [`import/no-restricted-paths`](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-restricted-paths.md)
 - **What it does:** Disallows `import` statements that import modules from restricted paths.
 - **Why:** This can be useful for enforcing a specific directory structure.
+- We currently have no restricted paths, so leaving off, however, leaving here in case we have a reason to set any
 
 ## [`import/no-self-import`](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-self-import.md)
 - **What it does:** Disallows a module from importing itself.
@@ -467,10 +431,6 @@ what all the rules are and the reason they might be used.
 - **What it does:** Enforces that modules with a single export should use a default export rather than a named export.
 - **Why:** This can make importing the module more straightforward.
 
-## [`import/unambiguous`](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/unambiguous.md)
-- **What it does:** Disallows `import` statements in files that are not modules.
-- **Why:** This can prevent issues with scripts that are intended to be run in a non-module environment.
-
 ## [`indent`](https://eslint.org/docs/latest/rules/indent)
 - **What it does:** Enforces consistent indentation.
 - **Why:** Consistent indentation can make the code more readable.
@@ -494,6 +454,8 @@ what all the rules are and the reason they might be used.
 ## [`line-comment-position`](https://eslint.org/docs/latest/rules/line-comment-position)
 - **What it does:** Enforces a specific position for line comments.
 - **Why:** Consistent comment position can make the code more readable.
+- Leaving this as off for now, we can change later if there is a reason. It seems likely that there are times when it is
+  preferable to have comments beside code and times when it is more preferable to have it above.
 
 ## [`linebreak-style`](https://eslint.org/docs/latest/rules/linebreak-style)
 - **What it does:** Enforces consistent linebreak style.
@@ -506,6 +468,7 @@ what all the rules are and the reason they might be used.
 ## [`lines-around-comment`](https://eslint.org/docs/latest/rules/lines-around-comment)
 - **What it does:** Requires empty lines before and/or after comments.
 - **Why:** Empty lines around comments can make the code more readable.
+- Leaving this off. Can be changed later if there is a good use case.
 
 ## [`lines-around-directive`](https://eslint.org/docs/latest/rules/lines-around-directive)
 - **What it does:** Requires empty lines before and after directive statements (like `'use strict'`).
@@ -550,6 +513,7 @@ what all the rules are and the reason they might be used.
 ## [`multiline-comment-style`](https://eslint.org/docs/latest/rules/multiline-comment-style)
 - **What it does:** Enforces a particular style for multiline comments.
 - **Why:** Consistent comment style can make the code more readable.
+- Leaving off, as there are often use cases for either style.
 
 ## [`multiline-ternary`](https://eslint.org/docs/latest/rules/multiline-ternary)
 - **What it does:** Enforces newlines between operands of a ternary expression if the expression spans multiple lines.
@@ -562,10 +526,6 @@ what all the rules are and the reason they might be used.
 ## [`new-parens`](https://eslint.org/docs/latest/rules/new-parens)
 - **What it does:** Requires parentheses when invoking a constructor with no arguments.
 - **Why:** This can make the code more readable and can prevent potential errors in some JavaScript engines.
-
-## [`newline-before-return`](https://eslint.org/docs/latest/rules/newline-before-return)
-- **What it does:** Requires an empty line before return statements.
-- **Why:** An empty line before return statements can make the code more readable.
 
 ## [`newline-per-chained-call`](https://eslint.org/docs/latest/rules/newline-per-chained-call)
 - **What it does:** Requires a newline after each call in a method chain if the method chain spans multiple lines.
@@ -755,10 +715,6 @@ what all the rules are and the reason they might be used.
 - **What it does:** Disallows assigning to imported bindings.
 - **Why:** Assigning to imported bindings can lead to unexpected behavior.
 
-## [`no-inline-comments`](https://eslint.org/docs/latest/rules/no-inline-comments)
-- **What it does:** Disallows inline comments.
-- **Why:** Inline comments can make the code more difficult to read.
-
 ## [`no-inner-declarations`](https://eslint.org/docs/latest/rules/no-inner-declarations)
 - **What it does:** Disallows variable or function declarations in nested blocks.
 - **Why:** Moving function declarations to the program or function body root prevents behavior differences between browsers.
@@ -811,10 +767,6 @@ what all the rules are and the reason they might be used.
 - **What it does:** Disallows mixed binary operators without parentheses.
 - **Why:** Mixing operators can be confusing due to different precedence levels.
 
-## [`no-mixed-requires`](https://eslint.org/docs/latest/rules/no-mixed-requires)
-- **What it does:** Disallows mixing regular variable and `require` declarations.
-- **Why:** This rule aims to make dependencies more visible and easier to manage.
-
 ## [`no-mixed-spaces-and-tabs`](https://eslint.org/docs/latest/rules/no-mixed-spaces-and-tabs)
 - **What it does:** Disallows mixed spaces and tabs for indentation.
 - **Why:** Consistent indentation can make the code more readable.
@@ -841,7 +793,7 @@ what all the rules are and the reason they might be used.
 
 ## [`no-negated-condition`](https://eslint.org/docs/latest/rules/no-negated-condition)
 - **What it does:** Disallows negated conditions in `if` statements.
-- **Why:** Negated conditions can be more difficult to understand than non-negated ones.
+- **Why:** Negated conditions can be more difficult to understand and less efficient than non-negated ones.
 
 ## [`no-negated-in-lhs`](https://eslint.org/docs/latest/rules/no-negated-in-lhs)
 - **What it does:** Disallows negating the left operand in `in` expressions.
@@ -942,10 +894,12 @@ what all the rules are and the reason they might be used.
 ## [`no-restricted-imports`](https://eslint.org/docs/latest/rules/no-restricted-imports)
 - **What it does:** Disallows `import` statements for specific modules.
 - **Why:** This can be useful for preventing the use of certain modules.
+- Leaving this here, but off, as we might have a use for it at some point.
 
 ## [`no-restricted-modules`](https://eslint.org/docs/latest/rules/no-restricted-modules)
 - **What it does:** Disallows specific modules.
 - **Why:** This rule allows you to specify modules that you don't want to use in your application.
+- Leaving off, but in project as there may be a use for this
 
 ## [`no-restricted-properties`](https://eslint.org/docs/latest/rules/no-restricted-properties)
 - **What it does:** Disallows certain properties on certain objects.
@@ -999,10 +953,6 @@ what all the rules are and the reason they might be used.
 - **What it does:** Disallows a space between a function name and the opening parenthesis in a function call.
 - **Why:** Consistent spacing can make the code more readable.
 
-## [`no-sync`](https://eslint.org/docs/latest/rules/no-sync)
-- **What it does:** Disallows synchronous methods.
-- **Why:** Synchronous methods can block the event loop, reducing the performance of the Node.js application.
-
 ## [`no-tabs`](https://eslint.org/docs/latest/rules/no-tabs)
 - **What it does:** Disallows tabs for indentation.
 - **Why:** Consistent indentation can make the code more readable.
@@ -1010,10 +960,6 @@ what all the rules are and the reason they might be used.
 ## [`no-template-curly-in-string`](https://eslint.org/docs/latest/rules/no-template-curly-in-string)
 - **What it does:** Disallows template literal placeholder syntax in regular strings.
 - **Why:** Template literal placeholder syntax in regular strings can be a sign of a mistake or misunderstanding.
-
-## [`no-ternary`](https://eslint.org/docs/latest/rules/no-ternary)
-- **What it does:** Disallows ternary operators.
-- **Why:** Ternary operators can be confusing to read.
 
 ## [`no-this-before-super`](https://eslint.org/docs/latest/rules/no-this-before-super)
 - **What it does:** Disallows the use of `this`/`super` before calling `super()` in constructors.
@@ -1226,6 +1172,7 @@ what all the rules are and the reason they might be used.
 ## [`prefer-reflect`](https://eslint.org/docs/latest/rules/prefer-reflect)
 - **What it does:** Requires `Reflect` methods where applicable.
 - **Why:** `Reflect` methods are more modern and have some advantages over their counterparts.
+- Leaving this off for now, but we can consider if we have a reason to set this at a later date.
 
 ## [`prefer-regex-literals`](https://eslint.org/docs/latest/rules/prefer-regex-literals)
 - **What it does:** Disallows the use of `RegExp` constructor in favor of regular expression literals.
@@ -1374,6 +1321,7 @@ what all the rules are and the reason they might be used.
 ## [`wrap-regex`](https://eslint.org/docs/latest/rules/wrap-regex)
 - **What it does:** Requires parenthesis around regex literals.
 - **Why:** Parentheses can make the regular expression more readable.
+- Leaving off for now, this can be reconsidered later if it seems like it would be better to add parens
 
 ## [`yield-star-spacing`](https://eslint.org/docs/latest/rules/yield-star-spacing)
 - **What it does:** Requires spacing after the `*` in `yield*` expressions.
