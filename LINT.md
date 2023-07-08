@@ -317,7 +317,9 @@ what all the rules are and the reason they might be used.
 ## [`import/group-exports`](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/group-exports.md)
 - **What it does:** Requires that multiple exports be grouped into a single `export` statement.
 - **Why:** Grouping exports can make the code more concise.
-
+- Leaving off. Would leave this on if it allowed exports on individual items grouped at the end of the file, however,
+  this seems to require that all exports are grouped as an object or something like that.
+  
 ## [`import/max-dependencies`](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/max-dependencies.md)
 - **What it does:** Limits the maximum number of dependencies a module can have.
 - **Why:** Modules with too many dependencies can be hard to understand and maintain.
@@ -854,6 +856,9 @@ what all the rules are and the reason they might be used.
 ## [`no-plusplus`](https://eslint.org/docs/latest/rules/no-plusplus)
 - **What it does:** Disallows the use of the `++` and `--` operators.
 - **Why:** These operators can be confusing and can lead to unexpected behavior due to automatic semicolon insertion.
+- Leaving this off because there are frequently good use cases for this, such as during various types of loops.
+  For now, we should consider a ++ or similar construct as a potential, non-functional paradigm and should consider that
+  in the context of development, with assumption that we would like to focus on functional design when possible.
 
 ## [`no-process-env`](https://eslint.org/docs/latest/rules/no-process-env)
 - **What it does:** Disallows the use of `process.env`.
@@ -1241,6 +1246,7 @@ what all the rules are and the reason they might be used.
 ## [`sort-keys`](https://eslint.org/docs/latest/rules/sort-keys)
 - **What it does:** Requires object keys to be sorted.
 - **Why:** Sorting keys can make the code more readable and easier to maintain.
+- Leaving this as "off" since there are often times when it makes more sense to view keys in non-alphanumeric order
 
 ## [`sort-imports`](https://eslint.org/docs/latest/rules/sort-imports)
 - **What it does:** Enforces a convention in the sorting of `import` statements.
@@ -1301,10 +1307,6 @@ what all the rules are and the reason they might be used.
 ## [`use-isnan`](https://eslint.org/docs/latest/rules/use-isnan)
 - **What it does:** Requires calls to `isNaN()` when checking for `NaN`.
 - **Why:** `NaN` is a special case in JavaScript and is the only value that is not equal to itself. Using `isNaN()` is the correct way to check for `NaN`.
-
-## [`valid-jsdoc`](https://eslint.org/docs/latest/rules/valid-jsdoc)
-- **What it does:** Enforces valid and consistent JSDoc comments.
-- **Why:** JSDoc comments can improve code readability and provide useful information for developers.
 
 ## [`valid-typeof`](https://eslint.org/docs/latest/rules/valid-typeof)
 - **What it does:** Enforces comparing `typeof` expressions against valid strings.
