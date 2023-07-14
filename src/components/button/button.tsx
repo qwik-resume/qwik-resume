@@ -1,32 +1,31 @@
 import { component$, PropFunction, Slot } from '@builder.io/qwik';
 
-// TODO: consider changing these to enums
-// TODO: verify that all these values actually work and if not, remove those that do not
-// TODO: consider whether these types should be extracted to separate files
-export type ButtonSize =
-  | 'xs'
-  | 'sm'
-  | 'base'
-  | 'lg'
-  | 'xl'
-  | '2xl'
-  | '3xl'
-  | '4xl'
-  | '5xl'
-  | '6xl'
-  | '7xl'
-  | '8xl';
+export enum ButtonSize {
+  XS = 'xs',
+  SM = 'sm',
+  BASE = 'base',
+  LG = 'lg',
+  XL = 'xl',
+  TWO_XL = '2xl',
+  THREE_XL = '3xl',
+  FOUR_XL = '4xl',
+  FIVE_XL = '5xl',
+  SIX_XL = '6xl',
+  SEVEN_XL = '7xl',
+  EIGHT_XL = '8xl',
+}
 
-export type ButtonWeight =
-  | 'thin'
-  | 'extralight'
-  | 'light'
-  | 'normal'
-  | 'medium'
-  | 'semibold'
-  | 'bold'
-  | 'extrabold'
-  | 'black';
+export enum ButtonWeight {
+  THIN = 'thin',
+  EXTRA_LIGHT = 'extralight',
+  LIGHT = 'light',
+  NORMAL = 'normal',
+  MEDIUM = 'medium',
+  SEMI_BOLD = 'semibold',
+  BOLD = 'bold',
+  EXTRA_BOLD = 'extrabold',
+  BLACK = 'black',
+}
 
 export interface ButtonProps {
   onClick$?: PropFunction<() => void>;
@@ -45,9 +44,9 @@ export const Button = component$<ButtonProps>((props: ButtonProps = {}) => {
   const {
     id,
     rounded = true,
-    size = 'base',
+    size = ButtonSize.BASE,
     uppercase = true,
-    weight = 'medium',
+    weight = ButtonWeight.MEDIUM,
   } = props;
   const classes = {
     'inline-block': true,
@@ -64,7 +63,7 @@ export const Button = component$<ButtonProps>((props: ButtonProps = {}) => {
   };
 
   return (
-    <button id={id} type="button" class={classes} onClick$={props.onClick$}>
+    <button id={id} type='button' class={classes} onClick$={props.onClick$}>
       <Slot></Slot>
     </button>
   );

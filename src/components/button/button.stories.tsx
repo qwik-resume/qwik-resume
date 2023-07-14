@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from 'storybook-framework-qwik';
 import '../../global.css';
-import { Button, type ButtonProps } from './button';
+import {
+  Button, type ButtonProps, ButtonSize, ButtonWeight,
+} from './button';
 
 // NOTE: I wanted to do an `action` for `onClick$`, however, event handlers need to be wrapped in
 //       $() in Qwik, and storybook does not seem to do this by default, so it would error.
@@ -18,14 +20,14 @@ const meta: Meta<ButtonProps> = {
     },
     size: {
       control: { type: 'select' },
-      options: ['xs', 'sm', 'base', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl', '7xl', '8xl'],
+      options: Object.values(ButtonSize),
     },
     uppercase: {
       control: 'boolean',
     },
     weight: {
       control: { type: 'select' },
-      options: ['thin', 'extralight', 'light', 'normal', 'medium', 'semibold', 'bold', 'extrabold', 'black'],
+      options: Object.values(ButtonWeight),
     },
   },
 };
@@ -45,8 +47,8 @@ export const Primary: Story = {
       shadow: true,
     },
     rounded: true,
-    size: 'base',
-    weight: 'medium',
+    size: ButtonSize.BASE,
+    weight: ButtonWeight.MEDIUM,
     uppercase: true,
   },
   render: (props) => <Button {...props}>Button Text</Button>,

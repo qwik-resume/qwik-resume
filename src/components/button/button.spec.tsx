@@ -47,17 +47,17 @@ describe('Button', () => {
   });
 
   test.each([
-    ['xs', 'text-xs'],
-    ['sm', 'text-sm'],
-    ['lg', 'text-lg'],
-    ['xl', 'text-xl'],
-    ['2xl', 'text-2xl'],
-    ['3xl', 'text-3xl'],
-    ['4xl', 'text-4xl'],
-    ['5xl', 'text-5xl'],
-    ['6xl', 'text-6xl'],
-    ['7xl', 'text-7xl'],
-    ['8xl', 'text-8xl'],
+    [ButtonSize.XS, 'text-xs'],
+    [ButtonSize.SM, 'text-sm'],
+    [ButtonSize.LG, 'text-lg'],
+    [ButtonSize.XL, 'text-xl'],
+    [ButtonSize.TWO_XL, 'text-2xl'],
+    [ButtonSize.THREE_XL, 'text-3xl'],
+    [ButtonSize.FOUR_XL, 'text-4xl'],
+    [ButtonSize.FIVE_XL, 'text-5xl'],
+    [ButtonSize.SIX_XL, 'text-6xl'],
+    [ButtonSize.SEVEN_XL, 'text-7xl'],
+    [ButtonSize.EIGHT_XL, 'text-8xl'],
   ] as [ButtonSize, string][])('changing size to %s sets a %s class', async (size, expected) => {
     const button = await createButton({ size });
     const classList = button?.classList;
@@ -67,14 +67,14 @@ describe('Button', () => {
   });
 
   test.each([
-    ['thin', 'font-thin'],
-    ['extralight', 'font-extralight'],
-    ['light', 'font-light'],
-    ['normal', 'font-normal'],
-    ['semibold', 'font-semibold'],
-    ['bold', 'font-bold'],
-    ['extrabold', 'font-extrabold'],
-    ['black', 'font-black'],
+    [ButtonWeight.THIN, 'font-thin'],
+    [ButtonWeight.EXTRA_LIGHT, 'font-extralight'],
+    [ButtonWeight.LIGHT, 'font-light'],
+    [ButtonWeight.NORMAL, 'font-normal'],
+    [ButtonWeight.SEMI_BOLD, 'font-semibold'],
+    [ButtonWeight.BOLD, 'font-bold'],
+    [ButtonWeight.EXTRA_BOLD, 'font-extrabold'],
+    [ButtonWeight.BLACK, 'font-black'],
   ] as [ButtonWeight, string][])(
     'changing weight to %s sets a %s class',
     async (weight, expected) => {
