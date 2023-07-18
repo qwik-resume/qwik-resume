@@ -46,36 +46,28 @@ describe('Button', () => {
     expect(button?.classList.contains('rounded')).toBe(false);
   });
 
-  test.each([
-    [ButtonSize.XS, 'text-xs'],
-    [ButtonSize.SM, 'text-sm'],
-    [ButtonSize.LG, 'text-lg'],
-    [ButtonSize.XL, 'text-xl'],
-    [ButtonSize.TWO_XL, 'text-2xl'],
-    [ButtonSize.THREE_XL, 'text-3xl'],
-    [ButtonSize.FOUR_XL, 'text-4xl'],
-    [ButtonSize.FIVE_XL, 'text-5xl'],
-    [ButtonSize.SIX_XL, 'text-6xl'],
-    [ButtonSize.SEVEN_XL, 'text-7xl'],
-    [ButtonSize.EIGHT_XL, 'text-8xl'],
-  ] as [ButtonSize, string][])('changing size to %s sets a %s class', async (size, expected) => {
-    const button = await createButton({ size });
-    const classList = button?.classList;
+  test.each(
+    Object.values(ButtonSize)
+      .filter((value) => value !== ButtonSize.BASE)
+      .map((value) => [value, `text-${value}`]) as [ButtonSize, string][],
+  )(
+    'changing size to %s sets a %s class',
+    async (size, expected) => {
+      const button = await createButton({ size });
+      const classList = button?.classList;
 
-    expect(classList?.contains(expected)).toBe(true);
-    expect(classList?.contains('text-base')).toBe(false);
-  });
+      console.log({ size });
+      console.log({ classList });
+      expect(classList?.contains(expected)).toBe(true);
+      expect(classList?.contains('text-base')).toBe(false);
+    },
+  );
 
-  test.each([
-    [ButtonWeight.THIN, 'font-thin'],
-    [ButtonWeight.EXTRA_LIGHT, 'font-extralight'],
-    [ButtonWeight.LIGHT, 'font-light'],
-    [ButtonWeight.NORMAL, 'font-normal'],
-    [ButtonWeight.SEMI_BOLD, 'font-semibold'],
-    [ButtonWeight.BOLD, 'font-bold'],
-    [ButtonWeight.EXTRA_BOLD, 'font-extrabold'],
-    [ButtonWeight.BLACK, 'font-black'],
-  ] as [ButtonWeight, string][])(
+  test.each(
+    Object.values(ButtonWeight)
+      .filter((value) => value !== ButtonWeight.MEDIUM)
+      .map((value) => [value, `font-${value}`]) as [ButtonWeight, string][],
+  )(
     'changing weight to %s sets a %s class',
     async (weight, expected) => {
       const button = await createButton({ weight });
