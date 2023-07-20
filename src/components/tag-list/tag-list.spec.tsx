@@ -14,6 +14,16 @@ describe('TagList', () => {
   });
 
   test('allows a developer to provide an array of options to choose from', async () => {
+    const { render, screen } = await createDOM();
+    const data = ['a', 'b', 'c'];
+
+    await render(<TagList data={data} />);
+
+    const tagList = screen.querySelector('.tag-list');
+    const tagListItems = [...tagList?.querySelectorAll('.tag-list-item') ?? []];
+
+    expect(tagListItems.length).toEqual(3);
+    expect(tagListItems.map(item => item.textContent)).toEqual(data);
   });
 
   test(
