@@ -1,24 +1,17 @@
-import { createDOM } from '@builder.io/qwik/testing';
 import { describe, expect, test } from 'vitest';
-import { Button, ButtonProps, ButtonSize, ButtonWeight } from './button';
-
-async function createButton(props: ButtonProps = {}): Promise<HTMLElement> {
-  const { render, screen } = await createDOM();
-
-  await render(<Button {...props} />);
-  return screen.querySelector('button') as HTMLElement;
-}
+import { Button, ButtonSize, ButtonWeight } from './button';
+import { createElement, createElementWithUserEvent } from '~/services/testing';
 
 describe('Button', () => {
   test('creates a simple button', async () => {
-    const button = await createButton();
+    const [button] = await createElement(<Button />) as HTMLElement[];
 
     expect(button).toBeTruthy();
     expect(button?.nodeName).toEqual('BUTTON');
   });
 
   test('setting id sets the button\'s id attribute', async () => {
-    const button = await createButton({ id: 'test-id' });
+    const [button] = await createElement(<Button id="test-id" />);
 
     expect(button?.id).toEqual('test-id');
   });
@@ -35,13 +28,13 @@ describe('Button', () => {
     'text-base',
     'uppercase',
   ])('default button has "%s" class', async (className) => {
-    const button = await createButton();
+    const [button] = await createElement(<Button />);
 
     expect(button?.classList?.contains(className)).toBe(true);
   });
 
   test('setting rounded to false removes rounded class', async () => {
-    const button = await createButton({ rounded: false });
+    const [button] = await createElement(<Button rounded={false} />);
 
     expect(button?.classList.contains('rounded')).toBe(false);
   });
@@ -53,11 +46,9 @@ describe('Button', () => {
   )(
     'changing size to %s sets a %s class',
     async (size, expected) => {
-      const button = await createButton({ size });
+      const [button] = await createElement(<Button size={size} />);
       const classList = button?.classList;
 
-      console.log({ size });
-      console.log({ classList });
       expect(classList?.contains(expected)).toBe(true);
       expect(classList?.contains('text-base')).toBe(false);
     },
@@ -70,7 +61,7 @@ describe('Button', () => {
   )(
     'changing weight to %s sets a %s class',
     async (weight, expected) => {
-      const button = await createButton({ weight });
+      const [button] = await createElement(<Button weight={weight} />);
       const classList = button?.classList;
 
       expect(classList.contains(expected)).toBe(true);
@@ -79,7 +70,7 @@ describe('Button', () => {
   );
 
   test('setting uppercase to false removes uppercase class', async () => {
-    const button = await createButton({ uppercase: false });
+    const [button] = await createElement(<Button uppercase={false} />);
 
     expect(button?.classList?.contains('uppercase')).toBe(false);
   });
@@ -92,7 +83,7 @@ describe('Button', () => {
       'text-[black]': true,
     };
 
-    const button = await createButton({ classes });
+    const [button] = await createElement(<Button classes={classes} />);
     const classList = button?.classList;
 
     Object.entries(classes).forEach(([className, expected]) =>
@@ -101,10 +92,8 @@ describe('Button', () => {
   });
 
   test('clicking the button triggers the onClick$ handler', async () => {
-    const { render, userEvent } = await createDOM();
     const testThings = { stuff: 'not-set' };
-
-    await render(<Button onClick$={() => {
+    const { userEvent } = await createElementWithUserEvent(<Button onClick$={() => {
       testThings.stuff = 'things';
     }} />);
 

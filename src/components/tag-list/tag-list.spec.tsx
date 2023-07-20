@@ -1,25 +1,6 @@
-import { JSX } from '@builder.io/qwik/jsx-runtime';
-import { createDOM } from '@builder.io/qwik/testing';
 import { describe, expect, test } from 'vitest';
 import { TagList } from './tag-list';
-
-/**
- * Takes a JSX element and a selector and
- *   - Renders the element
- *   - Finds all items matching the selector and returns them as an array of elements
- * @param {JSX.Element} el The JSX.Element to render
- * @param {string} selector The items to find after the element is rendered
- * @return {Promise<Element[]>} The list of Elements that match the selector (if any)
- */
-const createElement = async (el: JSX.Element, selector: string): Promise<Element[]> => {
-  const { render, screen } = await createDOM();
-
-  await render(el);
-
-  const targets = screen.querySelectorAll(selector);
-
-  return [...targets ?? []];
-};
+import { createElement } from '~/services/testing';
 
 describe('TagList', () => {
   test('renders a tag list component instance', async () => {
