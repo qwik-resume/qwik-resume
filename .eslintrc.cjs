@@ -153,7 +153,7 @@ module.exports = {
         allowObject: false
       }
     ],
-    "import/exports-last": ["error"],
+    "import/exports-last": ["off"],
     "import/group-exports": ["off"],
     "import/no-self-import": ["error"],
     "import/no-cycle": [
