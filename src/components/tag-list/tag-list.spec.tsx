@@ -17,6 +17,13 @@ describe('TagList', () => {
     expect(tagListItems.map(item => item.textContent)).toEqual(data);
   });
 
+  test('allows a developer to provide objects in the array', async () => {
+    const data = ['a', { label: 'BEE', value: 'b' }, 'c'];
+    const tagListItems = await createElement(<TagList data={data} />, '.tag-list .tag-list-item');
+
+    expect(tagListItems.map(item => item.textContent)).toEqual(['a', 'BEE', 'c']);
+  });
+
   test(
     'allows a developer to indicate a different property than the default for the list',
     async () => {
