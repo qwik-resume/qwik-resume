@@ -8,10 +8,14 @@ export interface TagListProps {
  * TagList component
  */
 export const TagList = component$<TagListProps>((props: TagListProps = {}) => (
-  <div class='tag-list border border-black shadow w-full rounded h-10 px-1 py-1'>
+  <div class='tag-list border shadow w-full rounded h-10 px-1 py-1'>
     {props?.data?.map((item: string) => (
-      <div class='tag-list-item'>{item}</div>
+      <div class='tag-list-item inline-flex items-center border rounded h-full px-1 mx-1'>
+        <p class='inline-block flex-initial'>{item}</p>
+      </div>
     ))}
-    <div contentEditable='true'></div>
+    <div class='tag-list-entry inline-flex items-center h-full px-1 mx-1'>
+      <p contentEditable='true' class='inline-block w-60 outline-0'></p>
+    </div>
   </div>
 ));
