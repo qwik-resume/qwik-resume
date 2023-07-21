@@ -1,23 +1,30 @@
 import { JSX } from '@builder.io/qwik/jsx-runtime';
 import { createDOM } from '@builder.io/qwik/testing';
 
+/**
+ * UserEvent type used to represent a function that triggers an event on a DOM element.
+ * @typedef UserEvent
+ * @type {function}
+ * @param {string | Element | keyof HTMLElementTagNameMap | null} queryOrElement The target of the
+ *   event.
+ * @param {string | keyof WindowEventMap} eventNameCamel The name of the event to trigger.
+ * @param {any} eventPayload The data to attach to the event. The type is any due to the
+ *   requirements of the Qwik framework.
+ * @return {Promise<void>}
+ */
 type UserEvent = (
   queryOrElement: string | Element | keyof HTMLElementTagNameMap | null,
   eventNameCamel: string | keyof WindowEventMap,
-  // the following line is to match what is coming from qwik
-  // eslint-disable-next-line
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   eventPayload?: any
 ) => Promise<void>;
 
 /**
- * Takes a JSX element and a selector and
- *  - Renders the element
- *  - Finds all items matching the selector and returns them as an array of elements
- *  - returns a userEvent method for triggering events
- * @param {JSX.Element} jsxElement The JSX.Element to render
- * @param {string} selector The items to find after the element is rendered
- * @return {Promise<{elements: Element[], userEvent: UserEvent}>} An object containing the related
- *   elements and the userEvent function
+ * Creates and renders a JSX element, then selects matching elements based on a selector.
+ * @param {JSX.Element} jsxElement The JSX element to create and render.
+ * @param {string} selector A selector used to match elements in the rendered output.
+ * @return {Promise<{elements: Element[], userEvent: UserEvent}>} An object containing an array of
+ *   matching elements and a userEvent function.
  */
 export const createElementWithUserEvent = async (
   jsxElement: JSX.Element,
@@ -30,18 +37,17 @@ export const createElementWithUserEvent = async (
 
   await render(jsxElement);
 
-  const targets = screen.querySelectorAll(selector);
+  // The NodeList from querySelectorAll is not iterable in this context, so converting to an array
+  const targets = Array.from(screen.querySelectorAll(selector));
 
-  return { elements: [...Array.from(targets) ?? []], userEvent };
+  return { elements: targets, userEvent };
 };
 
 /**
- * Takes a JSX element and a selector and
- *   - Renders the element
- *   - Finds all items matching the selector and returns them as an array of elements
- * @param {JSX.Element} jsxElement The JSX.Element to render
- * @param {string} selector The items to find after the element is rendered
- * @return {Promise<Element[]>} The list of Elements that match the selector (if any)
+ * Creates and renders a JSX element, then returns matching elements based on a selector.
+ * @param {JSX.Element} jsxElement The JSX element to create and render.
+ * @param {string} selector A selector used to match elements in the rendered output.
+ * @return {Promise<Element[]>} An array of matching elements.
  */
 export const createElement = async (
   jsxElement: JSX.Element,
