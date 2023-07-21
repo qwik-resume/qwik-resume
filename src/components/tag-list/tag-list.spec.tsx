@@ -24,11 +24,17 @@ describe('TagList', () => {
     expect(tagListItems.map(item => item.textContent)).toEqual(['a', 'BEE', 'c']);
   });
 
-  test.skip(
-    'allows a developer to indicate a different property than the default for the list',
-    async () => {
-    },
-  );
+  test('allows a developer to specify a custom property to use as the label', async () => {
+    const data = ['a', 'b', { myCustomLabel: 'CAT', value: 'c' }];
+    const labelKey = 'myCustomLabel';
+
+    const tagListItems = await createElement(
+      <TagList data={data} labelKey={labelKey} />,
+      '.tag-list .tag-list-item',
+    );
+
+    expect(tagListItems.map(item => item.textContent)).toEqual(['a', 'b', 'CAT']);
+  });
 
   test.skip('displays a dropdown when user types', async () => {
   });

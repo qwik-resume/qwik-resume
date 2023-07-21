@@ -8,7 +8,7 @@ import { component$ } from '@builder.io/qwik';
  *   the text, must be a string.
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type TagListDataItem = string | Record<string, any>;
+export type TagListDataItem = string | { label?: string; [key: string]: any };
 
 /**
  * @typedef TagListProps
@@ -17,22 +17,24 @@ export type TagListDataItem = string | Record<string, any>;
  */
 export interface TagListProps {
   data?: TagListDataItem[];
+  labelKey?: string;
 }
 
 /**
- * Extracts a label from a string or object in tag list data.
- * @param {TagListDataItem} item - The data item to extract the label from. If an object, the
- *   default property is `label`.
- * @return {string} - The extracted label.
- * @throws {Error} - If the result label is not a string.
+ * Creates a function that extracts a label from a string or object in tag list data.
+ * @param {string} [labelKey = 'label'] - The key that should be used to extract the label from the
+ *   object.
+ * @return {(item: TagListDataItem) => string} - The function to extract a label from a
+ *   `TagListDataItem`.
  */
-const extractLabel = (item: TagListDataItem): string => {
+const extractLabel = (labelKey = 'label') => (item: TagListDataItem): string => {
   if (typeof item === 'string') {
     return item;
   }
 
-  if (typeof item.label === 'string') {
-    return item.label;
+  const label = item[labelKey];
+  if (typeof label === 'string') {
+    return label;
   }
 
   throw new Error('Value or label property must be a string.');
@@ -65,7 +67,9 @@ const renderTagListEntry = () => (
  * @return {JSX.Element} - The TagList component.
  */
 export const TagList = component$<TagListProps>((props: TagListProps = {}) => {
-  const tags = props.data?.map(extractLabel).map(renderTagListItem);
+  const tags = props.data
+    ?.map(extractLabel(props.labelKey))
+    ?.map(renderTagListItem);
 
   return (
     <div class='tag-list border shadow w-full rounded h-10 px-1 py-1'>

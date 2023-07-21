@@ -26,3 +26,11 @@ export const Primary: Story = {
   },
   render: (props) => <TagList {...props} />,
 };
+
+export const CustomLabel: Story = {
+  args: {
+    data: ['more-stuff', { title: 'more-things' }],
+    labelKey: 'title',
+  },
+  render: (props) => <TagList {...props} />,
+};
