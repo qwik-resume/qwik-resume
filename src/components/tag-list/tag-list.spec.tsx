@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest';
 import { TagList } from './tag-list';
-import { createElement } from '~/services/testing';
+import { createElement, createElementWithUserEvent } from '~/services/testing';
 
 describe('TagList', () => {
   test('renders an instance of the tag list component', async () => {
@@ -36,7 +36,22 @@ describe('TagList', () => {
     expect(tagListItems.map(item => item.textContent)).toEqual(['a', 'b', 'CAT']);
   });
 
-  test.skip('displays a dropdown when user types', async () => {
+  test('displays a dropdown when user types', async () => {
+    const data = ['first', 'second', 'third', 'fourth'];
+    const { userEvent, elements: [tagList] } = await createElementWithUserEvent(
+      <TagList data={data} />,
+    );
+    const entry = tagList.querySelector('.tag-list-entry > p');
+
+    expect(tagList.querySelector('.drop-down-list')).toBeFalsy();
+
+    await userEvent(entry, 'keydown', { key: 'f', code: 'KeyF' });
+
+    const dropdownList = tagList.querySelector('.drop-down-list');
+    const dropdownListItems = Array.from(dropdownList?.querySelectorAll('.list-item') ?? []);
+
+    expect(dropdownList).toBeTruthy();
+    expect(dropdownListItems.map(item => item.textContent)).toEqual(['first', 'fourth']);
   });
 
   test.skip('allows a user to select an option from the dropdown', async () => {

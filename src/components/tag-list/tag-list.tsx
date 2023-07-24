@@ -1,4 +1,4 @@
-import { component$ } from '@builder.io/qwik';
+import { $, component$ } from '@builder.io/qwik';
 
 /**
  * @typedef TagListDataItem
@@ -61,20 +61,23 @@ const renderTagListEntry = () => (
   </div>
 );
 
+const renderDropdownList = $(() => <div class=''></div>);
+
 /**
  * TagList component.
  * @param {TagListProps} props - The props for the TagList component.
  * @return {JSX.Element} - The TagList component.
  */
 export const TagList = component$<TagListProps>((props: TagListProps = {}) => {
-  const tags = props.data
+  const selected = props.data
     ?.map(extractLabel(props.labelKey))
     ?.map(renderTagListItem);
 
   return (
     <div class='tag-list border shadow w-full rounded h-10 px-1 py-1'>
-      {tags}
+      {selected}
       {renderTagListEntry()}
+      {renderDropdownList()}
     </div>
   );
 });
